@@ -15,6 +15,8 @@ class ClassController extends Controller
     public function index()
     {
         //
+        $items = Classes::paginate(5);
+        return view('classes.index', array('items' => $items));
     }
 
     /**
