@@ -1,4 +1,4 @@
-@extends('layouts.pupil')
+@extends('layouts.school_manager')
 
 @section('title', 'Class')
 
