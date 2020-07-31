@@ -184,7 +184,12 @@ class ClassController extends Controller
         /**
          * delete record on database
          */
-        $model->delete();
+        try {
+            $model->delete();
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect('class');
+        }
+
 
         return redirect('class');
     }
