@@ -26,7 +26,7 @@
                         <select class="form-control col-sm-10" name="class_id">
                             <option value="">Chọn lớp</option>
                             @foreach ($classes as $class)
-                            <option value="{{ $class->id }}" {{ (old('class_id', $item->class_id) == $class->id)?? echo ' selected'}}> 
+                            <option value="{{ $class->id }}" <?php if(old('class_id', $item->class_id) == $class->id) echo ' selected';?>> 
                                     {{ $class->name }} 
                                 </option>
                             @endforeach    
