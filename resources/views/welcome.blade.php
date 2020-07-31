@@ -1,9 +1,13 @@
-@extends('layouts.pupil')
+@extends('layouts.school_manager')
 
 @section('title', 'Welcome')
 
 @section('content')
-<div>
-    Home
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            Home
+        </div>
+    </div>
 </div>
 @endsection
