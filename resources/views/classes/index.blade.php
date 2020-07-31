@@ -14,7 +14,10 @@
                                 id
                             </th>
                             <th>
-                                Name
+                                Tên
+                            </th>
+                            <th>
+                                &nbsp;
                             </th>
                         </tr>
                     </thead>
@@ -26,6 +29,22 @@
                             </td>
                             <td>
                                 {{ $class->name }}
+                            </td>
+                            <td>
+                                <div class="row text-center">
+                                    <div class="col-sm-3">
+                                        <a href="{{ route('class.edit', ['primaryKeyValue' => $class->id]) }}">
+                                            <img class="icon_manage" title="Edit" src="{{ URL::asset('images/icon/ico_edit.png') }}">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <form action="{{ route('class.delete', [$class->id])}}" method="post">
+                                            <img class="icon_manage" title="Delete" src="{{ URL::asset('images/icon/delete-icon.png') }}">
+                                            @csrf 
+                                            @method('DELETE')
+                                        </form>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         @endforeach 
