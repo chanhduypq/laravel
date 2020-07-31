@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Classes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ClassController extends Controller
 {
@@ -41,7 +42,7 @@ class ClassController extends Controller
     {
         //
         $model = new Classes();
-        $rulesForAddingValidattion = [
+        $rules = [
             'name' => [
                 'required',
                 'max:30',
@@ -55,7 +56,7 @@ class ClassController extends Controller
             'name.min' => 'Tên lớp không được ít hơn 2 kí tự',
             'name.unique' => 'Đã tồn tại lớp học mang tên này rồi',
         ];
-        $validator = Validator::make($request->all(), $rulesForAddingValidattion, $validattionErrorMessages);
+        $validator = Validator::make($request->all(), $rules, $validattionErrorMessages);
 
         if ($validator->fails()) {
             return redirect('class/create')
@@ -94,9 +95,17 @@ class ClassController extends Controller
      * @param  \App\Classes  $classes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Classes $classes)
+    public function edit(Classes  $classes, $primaryKeyValue)
     {
-        //
+        $model = Classes::find($primaryKeyValue);
+        /**
+         * if the item has been removed
+         */
+        if ($model == null) {
+            return redirect('class');
+        }
+
+        return view('classes.edit', ['item' => $model]);
     }
 
     /**
@@ -106,9 +115,55 @@ class ClassController extends Controller
      * @param  \App\Classes  $classes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Classes $classes)
+    public function update(Request $request, $primaryKeyValue)
     {
-        //
+        $model = Classes::find($primaryKeyValue);
+        /**
+         * if the item has been removed
+         */
+        if ($model == null) {
+            return redirect('class');
+        }
+        /**
+         * 
+         */
+        $rules = [
+            'name' => [
+                'required',
+                'max:30',
+                'min:2',
+            ],
+        ];
+        $rules['name'][] = Rule::unique('classes')->ignore($primaryKeyValue, 'id');
+        
+        $validattionErrorMessages = [
+            'name.required' => 'Vui lòng nhập tên lớp.',
+            'name.max' => 'Tên lớp không được dài quá 30 kí tự',
+            'name.min' => 'Tên lớp không được ít hơn 2 kí tự',
+            'name.unique' => 'Đã tồn tại lớp học mang tên này rồi',
+        ];
+        
+
+        $validator = Validator::make($request->all(), $rules, $validattionErrorMessages);
+        
+        if ($validator->fails()) {
+            return redirect('class/edit/' . $primaryKeyValue)
+                            ->withErrors($validator->errors())
+                            ->withInput();
+        } else {
+            /**
+             * save on database
+             */
+            $columnsInTable = \Illuminate\Support\Facades\Schema::getColumnListing('classes');
+            foreach ($request->all() as $key => $value) {
+                if(in_array($key, $columnsInTable)){
+                    $model->$key = $value;
+                }
+            }
+            $model->save();
+            //
+            return redirect('class');
+        }
     }
 
     /**
@@ -117,8 +172,20 @@ class ClassController extends Controller
      * @param  \App\Classes  $classes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Classes $classes)
+    public function destroy(Classes $classes, $primaryKeyValue)
     {
-        //
+        $model = Classes::find($primaryKeyValue);
+        /**
+         * if the item has been removed
+         */
+        if ($model == null) {
+            return redirect('class');
+        }
+        /**
+         * delete record on database
+         */
+        $model->delete();
+
+        return redirect('class');
     }
 }

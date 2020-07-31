@@ -2,6 +2,14 @@
 
 @section('title', 'Class')
 
+@section('script_page')
+<script type="text/javascript">
+    $('form').find('img, button, a, input[type="button"], input[type="submit"]').click(function (e) {
+        $(this).parents('form').submit();
+    });
+</script>
+@endsection 
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -38,7 +46,7 @@
                                         </a>
                                     </div>
                                     <div class="col-sm-3">
-                                        <form action="{{ route('class.delete', [$class->id])}}" method="post">
+                                        <form action="{{ route('class.destroy', [$class->id])}}" method="post">
                                             <img class="icon_manage" title="Delete" src="{{ URL::asset('images/icon/delete-icon.png') }}">
                                             @csrf 
                                             @method('DELETE')

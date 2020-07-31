@@ -20,8 +20,8 @@ Route::put('/class/update/{primaryKeyValue}', [
     'uses' => 'ClassController@update',
     'as' => 'class.update'
 ]);
-Route::delete('/class/delete/{primaryKeyValue}', [
-    'uses' => 'ClassController@delete',
-    'as' => 'class.delete'
+Route::delete('/class/destroy/{primaryKeyValue}', [
+    'uses' => 'ClassController@destroy',
+    'as' => 'class.destroy'
 ]);
 
