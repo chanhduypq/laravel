@@ -31,6 +31,12 @@
                         <tr>
                             <td>
                                 {{ $class->name }}
+                                <div style="background-color: #d5e6a0;">
+                                    <div style="text-align: center">Danh sách sinh viên</div>
+                                    @foreach ($class->students as $student)
+                                        <div>{{ $student->name }}</div>
+                                    @endforeach     
+                                </div>
                             </td>
                             <td>
                                 <div class="row text-center">

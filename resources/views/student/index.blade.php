@@ -22,6 +22,9 @@
                                 Tên
                             </th>
                             <th>
+                                Lớp
+                            </th>
+                            <th>
                                 &nbsp;
                             </th>
                         </tr>
@@ -31,6 +34,9 @@
                         <tr>
                             <td>
                                 {{ $class->name }}
+                            </td>
+                            <td>
+                                {{ $class->classes->name }}
                             </td>
                             <td>
                                 <div class="row text-center">

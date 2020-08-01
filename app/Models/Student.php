@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    public function classes() {
+        return $this->belongsTo('App\Models\Classes');
+    }
+
     public static function boot() {
         parent::boot();
 
