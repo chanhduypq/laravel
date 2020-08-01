@@ -19,9 +19,6 @@
                     <thead>
                         <tr>
                             <th>
-                                id
-                            </th>
-                            <th>
                                 Tên
                             </th>
                             <th>
@@ -32,9 +29,6 @@
                     <tbody>
                         @foreach ($items as $class)
                         <tr>
-                            <td>
-                                {{ $class->id }}
-                            </td>
                             <td>
                                 {{ $class->name }}
                             </td>
