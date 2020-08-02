@@ -11,6 +11,6 @@ class StudentsExport implements FromCollection
     */
     public function collection()
     {
-        return Student::all();
+        return Student::all(['name','classes_id']);
     }
 }
