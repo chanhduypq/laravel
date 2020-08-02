@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    protected $fillable = ['name', 'classes_id'];
     public function classes() {
         return $this->belongsTo('App\Models\Classes');
     }
@@ -18,7 +19,7 @@ class Student extends Model
         });
 
         self::created(function($model) {
-            $classModel = Classes::find($model->class_id);
+            $classModel = Classes::find($model->classes_id);
             $classModel->number_of_student++;
             $classModel->save();
         });
