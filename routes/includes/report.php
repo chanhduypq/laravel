@@ -1,8 +1,7 @@
-<?php
+<?php 
 
-Route::any('/report', [
-    'uses' => 'ReportController@index',
-    'as' => 'report'
-]);
+Route::get('file-import-export', 'ReportController@fileImportExport');
+Route::post('file-import', 'ReportController@fileImport')->name('file-import');
+Route::get('file-export', 'ReportController@fileExport')->name('file-export');
 
 

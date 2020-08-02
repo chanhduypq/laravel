@@ -3,26 +3,21 @@
 @section('title', 'Thống kê')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div>
-                <form method="POST" action="{{ route('class.store')}}">
-                    <div class="form-row">
-                        <label class="col-sm-1 col-form-label" for="excel">File excel:</label>
-                        <input type="file" class="form-control col-sm-10" name="excel" id="excel"/>
-                    </div>
-                    <div class="row">&nbsp;</div>    
-                    <div class="row">
-                        <div class="col text-center">
-                            <input type="submit" value="Save"/>
-                        </div>
-                    </div>
-                    @csrf
-                </form>
-            </div>
+<div class="container mt-5 text-center">
+        <h2 class="mb-4">
+            Laravel 7 Import and Export CSV & Excel to Database Example
+        </h2>
 
-        </div>
+        <form action="{{ route('file-import') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group mb-4" style="max-width: 500px; margin: 0 auto;">
+                <div class="custom-file text-left">
+                    <input type="file" name="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </div>
+            <button class="btn btn-primary">Import data</button>
+            <a class="btn btn-success" href="{{ route('file-export') }}">Export data</a>
+        </form>
     </div>
-</div>
 @endsection
