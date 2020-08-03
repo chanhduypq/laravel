@@ -23,3 +23,7 @@ foreach (File::allFiles(__DIR__ . '/includes') as $route_file) {
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
