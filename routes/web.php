@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 foreach (File::allFiles(__DIR__ . '/includes') as $route_file) {
   require $route_file->getPathname();
@@ -26,4 +26,4 @@ foreach (File::allFiles(__DIR__ . '/includes') as $route_file) {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
