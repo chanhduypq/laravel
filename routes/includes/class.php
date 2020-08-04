@@ -7,7 +7,7 @@ Route::get('/class', [
 Route::get('/class/create', [
     'uses' => 'ClassController@create',
     'as' => 'class.create'
-]);//;
+])->middleware('auth');//;
 Route::post('/class/store', [
     'uses' => 'ClassController@store',
     'as' => 'class.store'
