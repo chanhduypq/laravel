@@ -6,6 +6,7 @@ use App\Models\Student;
 use App\Models\Classes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -66,12 +67,14 @@ class StudentController extends Controller
             /**
              * save on database
              */
+            $path = Storage::putFile('photos', $request->file('photo'));
             $columnsInTable = \Illuminate\Support\Facades\Schema::getColumnListing('students');
             foreach ($request->all() as $key => $value) {
                 if(in_array($key, $columnsInTable)){
                     $model->$key = $value;
                 }
             }
+            $model->photo = $path;
             $model->save();
             //
             return redirect('student');
