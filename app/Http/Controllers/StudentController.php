@@ -50,6 +50,11 @@ class StudentController extends Controller
                 'min:2',
             ],
             'classes_id' => 'required',
+            'photo' => [
+                'required',
+                'mimes:jpeg,bmp,png',
+                'max:512',//512KB
+            ],
         ];
         $validattionErrorMessages = [
             'name.required' => 'Vui lòng nhập tên.',
