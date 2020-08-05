@@ -84,6 +84,10 @@ class StudentController extends Controller
                 $path = Storage::putFile('public/photos', $request->file('photo'));
                 $model->photo = str_replace('public/photos/', '', $path);
             }
+            if($request->file('description')){
+                $path = Storage::putFile('public/descriptions', $request->file('description'));
+                $model->description = str_replace('public/descriptions/', '', $path);
+            }            
             $model->save();
             //
             return redirect('student');

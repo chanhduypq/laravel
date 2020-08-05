@@ -28,6 +28,9 @@
                                 Ảnh đại diện
                             </th>
                             <th>
+                                Thông tin chi tiết của sinh viên
+                            </th>
+                            <th>
                                 &nbsp;
                             </th>
                         </tr>
@@ -43,6 +46,9 @@
                             </td>
                             <td> 
                                 <img src="{{ url('storage/photos/'.$class->photo) }}" alt="" title="" />
+                            </td>
+                            <td> 
+                                Download
                             </td>
                             <td>
                                 <div class="row text-center">
