@@ -67,14 +67,18 @@ class StudentController extends Controller
             /**
              * save on database
              */
-            $path = Storage::putFile('photos', $request->file('photo'));
+            
+            
             $columnsInTable = \Illuminate\Support\Facades\Schema::getColumnListing('students');
             foreach ($request->all() as $key => $value) {
                 if(in_array($key, $columnsInTable)){
                     $model->$key = $value;
                 }
             }
-            $model->photo = $path;
+            if($request->file('photo')){
+                $path = Storage::putFile('photos', $request->file('photo'));
+                $model->photo = $path;
+            }
             $model->save();
             //
             return redirect('student');
