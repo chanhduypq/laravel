@@ -22,21 +22,21 @@
                     @endif
                     <div class="row">&nbsp;</div>
                     <div class="form-row">
-                        <label class="col-sm-1 col-form-label" for="class_id">Lớp:</label>
-                        <select class="form-control col-sm-10" name="class_id">
+                        <label class="col-sm-1 col-form-label" for="classes_id">Lớp:</label>
+                        <select class="form-control col-sm-10" name="classes_id">
                             <option value="">Chọn lớp</option>
                             @foreach ($classes as $class)
-                            <option value="{{ $class->id }}" <?php if(old('class_id', $item->class_id) == $class->id) echo ' selected';?>> 
+                            <option value="{{ $class->id }}" <?php if(old('classes_id', $item->classes_id) == $class->id) echo ' selected';?>> 
                                     {{ $class->name }} 
                                 </option>
                             @endforeach    
                         </select>
                     </div>
-                    @if ($errors->has('class_id')) 
+                    @if ($errors->has('classes_id')) 
                         <div class="row">&nbsp;</div>
                         <div class="form-row">
                             <label class="col-sm-1 col-form-label">&nbsp;</label>
-                            <div class="form-control col-sm-10 text-danger">{{ $errors->first('class_id') }}</div>
+                            <div class="form-control col-sm-10 text-danger">{{ $errors->first('classes_id') }}</div>
                         </div>    
                     @endif
                     <div class="row">&nbsp;</div>

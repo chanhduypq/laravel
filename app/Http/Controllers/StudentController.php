@@ -48,13 +48,13 @@ class StudentController extends Controller
                 'max:30',
                 'min:2',
             ],
-            'class_id' => 'required',
+            'classes_id' => 'required',
         ];
         $validattionErrorMessages = [
             'name.required' => 'Vui lòng nhập tên.',
             'name.max' => 'Tên không được dài quá 30 kí tự',
             'name.min' => 'Tên không được ít hơn 2 kí tự',
-            'class_id.required' => 'Vui lòng chọn lớp.',
+            'classes_id.required' => 'Vui lòng chọn lớp.',
         ];
         $validator = Validator::make($request->all(), $rules, $validattionErrorMessages);
 
@@ -133,14 +133,14 @@ class StudentController extends Controller
                 'max:30',
                 'min:2',
             ],
-            'class_id' => 'required',
+            'classes_id' => 'required',
         ];
         
         $validattionErrorMessages = [
             'name.required' => 'Vui lòng nhập tên.',
             'name.max' => 'Tên không được dài quá 30 kí tự',
             'name.min' => 'Tên không được ít hơn 2 kí tự',
-            'class_id.required' => 'Vui lòng chọn lớp.',
+            'classes_id.required' => 'Vui lòng chọn lớp.',
         ];
         
 
