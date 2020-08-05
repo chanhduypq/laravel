@@ -6,6 +6,7 @@ use App\Models\Classes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Cache;
 
 class ClassController extends Controller
 {
@@ -17,7 +18,11 @@ class ClassController extends Controller
     public function index()
     {
         //
-        $items = Classes::paginate(5);
+        if (!Cache::has('classes')) {
+            Cache::put('classes', Classes::all(), 60);
+        }
+        $items = Cache::get('classes');
+        
         return view('classes.index', array('items' => $items));
     }
 

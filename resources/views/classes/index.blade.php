@@ -62,13 +62,6 @@
             </div>
 
             </form>
-            <div class="row">
-                <div class="col-sm-5">&nbsp;</div>
-                <div class="col-sm-6">
-                    {{ $items->links() }}
-                </div>
-                <div class="col-sm-1">&nbsp;</div>
-            </div>
         </div>
     </div>
 </div>
