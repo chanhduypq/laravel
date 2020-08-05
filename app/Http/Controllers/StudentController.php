@@ -204,4 +204,16 @@ class StudentController extends Controller
 
         return redirect('student');
     }
+    
+    public function download($primaryKeyValue) {
+        $model = Student::find($primaryKeyValue);
+        /**
+         * if the item has been removed
+         */
+        if ($model == null || !$model->description) {
+            return redirect('student');
+        }
+        //download
+        return response()->download(storage_path('app/public/descriptions/' . $model->description));
+    }
 }

@@ -24,4 +24,8 @@ Route::delete('/student/destroy/{primaryKeyValue}', [
     'uses' => 'StudentController@destroy',
     'as' => 'student.destroy'
 ]);
+Route::get('/student/download/{primaryKeyValue}', [
+    'uses' => 'StudentController@download',
+    'as' => 'student.download'
+]);
 

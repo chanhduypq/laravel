@@ -45,10 +45,10 @@
                                 {{ $class->classes->name }}
                             </td>
                             <td> 
-                                <img src="{{ url('storage/photos/'.$class->photo) }}" alt="" title="" />
+                                <img style="width: 50px;height: 50px;" src="{{ url('storage/photos/'.$class->photo) }}" alt="" title="" />
                             </td>
-                            <td> 
-                                Download
+                            <td>
+                                <a href="{{ route('student.download', [$class->id]) }}">Download</a>
                             </td>
                             <td>
                                 <div class="row text-center">
