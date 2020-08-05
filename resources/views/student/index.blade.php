@@ -25,6 +25,9 @@
                                 Lớp
                             </th>
                             <th>
+                                Ảnh đại diện
+                            </th>
+                            <th>
                                 &nbsp;
                             </th>
                         </tr>
@@ -37,6 +40,9 @@
                             </td>
                             <td>
                                 {{ $class->classes->name }}
+                            </td>
+                            <td> 
+                                <img src="{{ url('storage/photos/'.$class->photo) }}" alt="" title="" />
                             </td>
                             <td>
                                 <div class="row text-center">

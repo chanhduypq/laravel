@@ -81,8 +81,8 @@ class StudentController extends Controller
                 }
             }
             if($request->file('photo')){
-                $path = Storage::putFile('photos', $request->file('photo'));
-                $model->photo = $path;
+                $path = Storage::putFile('public/photos', $request->file('photo'));
+                $model->photo = str_replace('public/photos/', '', $path);
             }
             $model->save();
             //
