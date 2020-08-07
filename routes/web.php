@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/notification', function () {
+    return view('notifications/welcome');
+});
 
 foreach (File::allFiles(__DIR__ . '/includes') as $route_file) {
   require $route_file->getPathname();
@@ -27,3 +27,8 @@ foreach (File::allFiles(__DIR__ . '/includes') as $route_file) {
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/test', function () {
+    event(new App\Events\StatusLiked('Someone'));
+    return "Event has been sent!";
+});

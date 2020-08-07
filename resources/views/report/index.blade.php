@@ -1,4 +1,4 @@
-@extends('layouts.report')
+@extends('layouts.app')
 
 @section('title', 'Thống kê')
 
