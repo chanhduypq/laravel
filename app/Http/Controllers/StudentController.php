@@ -87,7 +87,14 @@ class StudentController extends Controller
             if($request->file('description')){
                 $path = Storage::putFile('public/descriptions', $request->file('description'));
                 $model->description = str_replace('public/descriptions/', '', $path);
-            }            
+            }       
+            try {
+                $model->save();
+            } catch (\Illuminate\Database\QueryException $e) {
+                return redirect('student/create')
+                            ->withErrors($validator->errors())
+                            ->withInput();
+            }
             $model->save();
             //
             return redirect('student');
