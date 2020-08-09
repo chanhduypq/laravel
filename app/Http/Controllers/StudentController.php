@@ -7,6 +7,7 @@ use App\Models\Classes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Image;
 
 class StudentController extends Controller
 {
@@ -83,6 +84,16 @@ class StudentController extends Controller
             if($request->file('photo')){
                 $path = Storage::putFile('public/photos', $request->file('photo'));
                 $model->photo = str_replace('public/photos/', '', $path);
+                
+                $image = $request->file('photo');
+                $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+
+                $destinationPath = storage_path('app/public/photos/thumbnail');
+                $img = Image::make($image->getRealPath());
+                $img->resize(100, 100, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($destinationPath.'/'.$input['imagename']);
+                
             }
             if($request->file('description')){
                 $path = Storage::putFile('public/descriptions', $request->file('description'));
