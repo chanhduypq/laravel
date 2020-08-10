@@ -32,3 +32,8 @@ Route::get('/test', function () {
     event(new App\Events\StatusLiked('Someone'));
     return "Event has been sent!";
 });
+
+Route::get('/email', [
+    'uses' => 'OrderController@ship',
+    'as' => 'email'
+]);
