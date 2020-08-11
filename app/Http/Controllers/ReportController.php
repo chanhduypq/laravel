@@ -20,6 +20,7 @@ class ReportController extends Controller
     */
     public function fileImport(Request $request) 
     {
+        set_time_limit(0);
         Excel::import(new \App\Imports\StudentsImport, $request->file('file')->store('temp'));
         return back();
     }
