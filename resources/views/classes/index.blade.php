@@ -66,3 +66,5 @@
     </div>
 </div>
 @endsection
+
+<div>{{ $testView }}</div>
