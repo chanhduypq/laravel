@@ -67,8 +67,8 @@ class Handler extends ExceptionHandler
                     break;
             }
         } else {
-            return redirect()->route('home');
-//            return parent::render($request, $exception); nếu muốn hiển thị lỗi ra browser để fix bug thì gọi dòng code này
+//            return redirect()->route('home');
+            return parent::render($request, $exception); //nếu muốn hiển thị lỗi ra browser để fix bug thì gọi dòng code này
         }
     }
 }
