@@ -23,8 +23,6 @@ class ClassController extends Controller
         }
         $items = Cache::get('classes');
         
-        var_dump(\App\Models\Monhoc::find('42d874d2-fb7d-4716-b758-19740cc597c5'));
-        
         return view('classes.index', array('items' => $items));
     }
 
@@ -79,10 +77,6 @@ class ClassController extends Controller
                     $model->$key = $value;
                 }
             }
-            $model->save();
-            
-            $model = new \App\Models\Monhoc();
-            $model->name = 'java';
             $model->save();
             //
             return redirect('class');
