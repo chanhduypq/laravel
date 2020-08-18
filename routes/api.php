@@ -31,3 +31,7 @@ Route::group([
         Route::get('user', 'AuthController@user');
     });
 });
+
+Route::get('/classes', function () {
+    return new App\Http\Resources\ClassesCollection(\App\Models\Classes::paginate(2));
+});
