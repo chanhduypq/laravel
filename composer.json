@@ -9,22 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
-        "doctrine/dbal": "^2.10",
-        "dwij/laraadmin": "1.0.40",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
-        "laravel/tinker": "^2.0",
-        "laravel/ui": "^2.1",
-        "maatwebsite/excel": "^3.1",
-        "pusher/pusher-php-server": "^4.1"
+        "laravel/passport": "^9.3",
+        "laravel/tinker": "^2.0"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.3",
         "facade/ignition": "^2.0",
         "fzaninotto/faker": "^1.9.1",
-        "laravel/dusk": "^6.4",
         "mockery/mockery": "^1.3.1",
         "nunomaduro/collision": "^4.1",
         "phpunit/phpunit": "^8.5"
@@ -65,14 +59,6 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ],
-		"post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
-        ],
-        "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
         ]
     }
 }
