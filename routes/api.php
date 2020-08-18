@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Resources\ClassesCollection;
+use App\Http\Resources\Classes as ClassesResource;
+use App\Models\Classes;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +36,9 @@ Route::group([
 });
 
 Route::get('/classes', function () {
-    return new App\Http\Resources\ClassesCollection(\App\Models\Classes::paginate(2));
+    return new ClassesCollection(Classes::paginate(2));
+});
+
+Route::get('/classes/{id}', function (Request $request, $id) {
+    return new ClassesResource(Classes::find($id));
 });
