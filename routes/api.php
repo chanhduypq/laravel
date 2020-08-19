@@ -1,10 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Resources\ClassesCollection;
-use App\Http\Resources\Classes as ClassesResource;
-use App\Models\Classes;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,10 +31,12 @@ Route::group([
     });
 });
 
-Route::get('/classes', function () {
-    return new ClassesCollection(Classes::paginate(2));
-});
+Route::get('/classes', [
+    'uses' => 'ClassApiController@index',
+    'as' => 'api_class_list'
+]);
+Route::get('/classes/{id}', [
+    'uses' => 'ClassApiController@get',
+    'as' => 'api_class_get'
+]);
 
-Route::get('/classes/{id}', function (Request $request, $id) {
-    return new ClassesResource(Classes::find($id));
-});
