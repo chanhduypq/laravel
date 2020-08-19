@@ -39,4 +39,8 @@ Route::get('/classes/{id}', [
     'uses' => 'ClassApiController@get',
     'as' => 'api_class_get'
 ]);
+Route::delete('/classes/{id}', [
+    'uses' => 'ClassApiController@delete',
+    'as' => 'api_class_delete'
+]);
 

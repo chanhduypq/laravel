@@ -24,9 +24,23 @@ class ClassApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function get(Request $request, $id)
+    public function get($id)
     {
         return new ClassesResource(Classes::find($id));
+    }
+    
+    public function delete($id)
+    {
+        $message = 'Xóa thành công!';
+        try {
+            Classes::destroy($id);
+        } catch (\Illuminate\Database\QueryException $e) {
+            $message = 'Lớp này đang có sinh viên nên không được xóa.';
+        }
+        
+        return response()->json([
+            'message' => $message
+        ], 201);
     }
 
     
